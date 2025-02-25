@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gw-pod-cha
+  namespace: group1-team6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gw-lbl-cha
+  template:
+    metadata:
+      labels:
+        app: gw-lbl-cha
+    spec:
+      containers:
+      - name: gw-contain-cha
+        image: k8s-vga-worker1:5000/group1-team6-cha-gw:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8099
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: team6-gw-cha-sv
+  namespace: group1-team6
+spec:
+  selector:
+    app: gw-lbl-cha
+  ports:
+    - protocol: TCP
+      port: 8087 # kube unique inner port
+      targetPort: 8099 #listen port, container port, Docker Expose port is equal
+      nodePort: 30634
+  type: NodePort
