@@ -9,7 +9,7 @@ import org.springframework.web.server.ServerWebExchange;
 @Component
 public class FilterUtility {
 
-    public static final String CORRELATION_ID = "mgbank-correlation-id";
+    public final String CORRELATION_ID = "mgbank-correlation-id";
 
     public String getCorrelationId(HttpHeaders requestHeaders) {
         if (requestHeaders.get(CORRELATION_ID) != null) {
