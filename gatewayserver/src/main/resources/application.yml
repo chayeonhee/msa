@@ -8,8 +8,8 @@ spring:
     name: "gatewayserver"
   cloud:
     gateway:
-      discovery:
-        locator:
+      # discovery: !!
+        # locator:!!
           ## locate all services registered in Eureka server (Actuator to get the list of services)
           # enabled: false
           # lower-case-service-id: true
