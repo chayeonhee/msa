@@ -2,8 +2,8 @@ server:
   port: 8099
 
 spring:
-  # profiles:
-    # active: "local"
+  profiles:
+    active: "local"
   application:
     name: "gatewayserver"
   cloud:
