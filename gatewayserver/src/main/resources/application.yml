@@ -11,7 +11,7 @@ spring:
       discovery:
         locator:
           ## locate all services registered in Eureka server (Actuator to get the list of services)
-          # enabled: true
+          enabled: true
           lower-case-service-id: true
       httpclient:
         ## default 30000,
@@ -43,7 +43,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://team6-eureka-server:8761/eureka
+      defaultZone: http://team6-eureka-server:8761/eureka/
 resilience4j.circuitbreaker:
   configs:
     default:
