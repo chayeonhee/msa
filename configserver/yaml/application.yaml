@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cfg-server-cha
+  name: cfg-pod-cha
   namespace: group1-team6
 spec:
   replicas: 1
