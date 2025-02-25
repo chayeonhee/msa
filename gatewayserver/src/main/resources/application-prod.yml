@@ -1,9 +1,8 @@
 spring:
   config:
-    import: "optional:configserver:http://configserver-service:80/"
-
+    import: "optional:configserver:http://192.168.100.221:30633/"
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eurekaserver-service:80/eureka/
+      defaultZone: http://team6-eureka-server:8761/eureka
