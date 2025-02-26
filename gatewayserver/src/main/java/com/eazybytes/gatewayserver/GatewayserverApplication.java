@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 
 @SpringBootApplication
@@ -22,7 +23,7 @@ public class GatewayserverApplication {
 		SpringApplication.run(GatewayserverApplication.class, args);
 	}
 
-    // @Bean
+    @Bean
 	public RouteLocator mgbankRouteConfig(RouteLocatorBuilder routeLocatorBuilder) {
 		logger.debug("Configuring routes for MGBank");
 		return routeLocatorBuilder.routes()

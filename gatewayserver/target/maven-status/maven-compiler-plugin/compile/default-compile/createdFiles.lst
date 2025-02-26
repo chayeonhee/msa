@@ -1,0 +1,5 @@
+com\eazybytes\gatewayserver\filters\FilterUtility.class
+com\eazybytes\gatewayserver\filters\ResponseTraceFilter.class
+com\eazybytes\gatewayserver\GatewayserverApplication.class
+com\eazybytes\gatewayserver\filters\RequestTraceFilter.class
+com\eazybytes\gatewayserver\controller\FallbackController.class
