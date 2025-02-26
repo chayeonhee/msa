@@ -18,8 +18,8 @@ spring:
         connect-timeout: 1000
         ## default unlimited
         response-timeout: 2s
-    config:
-      import: "optional:configserver:http://192.168.100.221:30633/"
+  config:
+     import: "optional:configserver:http://192.168.100.221:30633/"
       # enabled: false
 
 
