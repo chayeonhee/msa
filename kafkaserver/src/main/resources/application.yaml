@@ -1,0 +1,32 @@
+# spring.application.name=kafkaServer
+# spring.profiles.active=native
+# server.port=8099
+# server.port=8889
+#uri에 .git을  빼야됨.
+# spring.cloud.config.server.git.uri=https://github.com/chayeonhee/config
+# spring.cloud.config.server.git.force-pull=true
+# # spring.cloud.config.server.git.refresh-rate=5000
+# # spring.cloud.config.server.git.search-paths=//하위파일경로
+# # spring.cloud.config.server.git.default-label=브랜치명
+
+# management.endpoints.web.exposure.include=*
+# management.health.readinessstate.enabled=true
+# management.health.livenessstate.enabled=true
+# encrypt.key="45D81EC1EF61DF9AD8D3E5BB397F9"
+
+# eureka.client.service-url.defaultZone=http://team6-eureka-server:8761/eureka
+# eureka.instance.lease-renewal-interval-in-seconds=10
+# eureka.instance.lease-expiration-duration-in-seconds=30
+# eureka.client.fetch-registry=true
+# eureka.client.register-with-eureka=true
+# eureka.instance.prefer-ip-address=true
+server:
+  port: 8099
+spring:
+  application:
+    name: kafkaServer
+  kafka:
+    bootstrap-servers: 192.168.100.221:9093  # Kafka 서버 주소 (Kubernetes 내부 서비스명)
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-pod-cha
+  namespace: group1-team6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-lbl-cha
+  template:
+    metadata:
+      labels:
+        app: kafka-lbl-cha
+    spec:
+      containers:
+      - name: kafka-contain-cha
+        image: k8s-vga-worker1:5000/group1-team6-cha-kafka:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8099
+        env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka-zookeeper:9093 # Kafka 서비스 이름 (같은 Pod에 있으므로 서비스 이름 사용)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: team6-kafka-cha-sv
+  namespace: group1-team6
+spec:
+  selector:
+    app: kafka-lbl-cha
+  ports:
+    - protocol: TCP
+      port: 8087 # kube unique inner port
+      targetPort: 8099 #listen port, container port, Docker Expose port is equal
+      nodePort: 30635
+  type: NodePort
