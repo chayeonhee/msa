@@ -16,6 +16,7 @@ spec:
       containers:
         - name: zookeeper
           image: k8s-vga-worker1:5000/group1-team6-cha-zoo:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 2181
           env:
@@ -25,6 +26,7 @@ spec:
               value: "2181"
         - name: kafka
           image: k8s-vga-worker1:5000/group1-team6-cha-kafka:latest
+          imagePullPolicy: Alwaysd
           ports:
             - containerPort: 9093
           env:
