@@ -26,7 +26,7 @@ spec:
               value: "2181"
         - name: kafka
           image: k8s-vga-worker1:5000/group1-team6-cha-kafka:latest
-          imagePullPolicy: Alwaysd
+          imagePullPolicy: Always
           ports:
             - containerPort: 9093
           env:
