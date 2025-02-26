@@ -27,8 +27,8 @@ public class GatewayserverApplication {
 		logger.debug("Configuring routes for MGBank");
 		return routeLocatorBuilder.routes()
             .route(p -> p
-                .path("/api/**")
-                .filters( f -> f.rewritePath("/api/(?<segment>.*)","/${segment}")
+                .path("/mgbank/loans/**")
+                .filters( f -> f.rewritePath("/mgbank/loans/(?<segment>.*)","/${segment}")
                     .addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
                     .circuitBreaker(config -> config.setName("accountsCircuitBreaker")
                     .setFallbackUri("forward:/contactSupport")
