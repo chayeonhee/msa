@@ -11,14 +11,8 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import org.springframework.kafka.listener.MessageListenerContainer;
-// import org.springframework.kafka.listener.config.MessageListenerContainerConfigurer;
-import org.springframework.kafka.listener.MessageListener;
-// import org.springframework.kafka.consumer.DefaultKafkaConsumerFactory;
-// import org.springframework.kafka.consumer.KafkaConsumer;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 
-import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 import java.util.HashMap;
 import java.util.Map;

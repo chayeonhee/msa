@@ -45,7 +45,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kafka-zookeeper
+  name: kafka-zookeeper-sv
 spec:
   ports:
     - port: 9093
