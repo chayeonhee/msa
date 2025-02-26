@@ -32,7 +32,7 @@ spec:
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL
               value: PLAINTEXT
             - name: KAFKA_ZOOKEEPER_CONNECT
-              value: localhost:2181
+              value: zookeeper:2181
             - name: KAFKA_LISTENER_NAMES
               value: INSIDE_KAFKA
             - name: KAFKA_LISTENER_PORT
@@ -49,6 +49,8 @@ metadata:
 spec:
   ports:
     - port: 9093
+      targetPort: 9093  # 포트 정의를 targetPort로 설정
     - port: 2181
+      targetPort: 2181  # 포트 정의를 targetPort로 설정
   selector:
-    app: kafka-zookeeper
+    app: kafka-zookeeper  # Deployment의 selector와 일치해야 함
