@@ -8,6 +8,7 @@ public class KafkaListenerService {
 
     @KafkaListener(topics = "cha-topic", groupId = "cha-group")
     public void listen(String message) {
+        System.out.println("========================");
         System.out.println("Received message: " + message);
     }
 }
