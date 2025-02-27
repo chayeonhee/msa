@@ -20,6 +20,10 @@ private final KafkaProducerService kafkaProducerService;
         kafkaProducerService.sendMessage("cha-topic", message);
         return "Message sent to Kafka topic: " + message;
     }
+    @GetMapping("/test")
+    public String getString() {
+        return "This is test message";
+    }
 
 
     // @Autowired
