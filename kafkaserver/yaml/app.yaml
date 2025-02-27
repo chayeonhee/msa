@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-pod-cha
+  name: kafkaclient-pod-cha
   namespace: group1-team6
 spec:
   replicas: 1
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: team6-kafka-cha-sv
+  name: team6-kafkaclient-cha-sv
   namespace: group1-team6
 spec:
   selector:
