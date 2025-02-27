@@ -26,7 +26,8 @@ spring:
   application:
     name: kafkaServer
   kafka:
-    bootstrap-servers: kafka.grup1-team6:9092 # Kafka 서버 주소
+    # bootstrap-servers: 192.168.100.221:30641 # Kafka 서버 주소
+    bootstrap-servers: kafka.group1-team6.svc.cluster.local:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
