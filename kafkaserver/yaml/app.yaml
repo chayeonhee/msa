@@ -19,9 +19,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8099
-        env:
-            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              value: kafka-zookeeper:9093 # Kafka 서비스 이름 (같은 Pod에 있으므로 서비스 이름 사용)
+        # env:
+        #     - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+        #       value: kafka-zookeeper:9093 # Kafka 서비스 이름 (같은 Pod에 있으므로 서비스 이름 사용)
 ---
 apiVersion: v1
 kind: Service
