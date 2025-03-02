@@ -1,3 +1,5 @@
-com\cha\KafkaProducerController.class
+com\cha\KafkaController.class
+com\cha\KafkaProducerService.class
+com\cha\KafkaConfig.class
 com\cha\KafkaApplication.class
-com\cha\ApplicationConfig.class
+com\cha\KafkaListenerService.class
