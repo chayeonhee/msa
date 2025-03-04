@@ -1,67 +1,54 @@
 server:
   port: 8099
-
-
-  
-  # cloud:
-  #   stream:
-  #     bindings:
-  #       output:
-  #         destination: rabbit-exchange  # RabbitMQ 교환기
-  #         binder: rabbit-binder         # RabbitMQ 바인더를 'rabbit-binder'로 지정
-  #       input:
-  #         destination: cha-topic  # 메시지를 받을 Kafka 토픽 이름
-  #         group: cha-group
-  #         binder: kafka-binder # RabbitMQ 바인더를 'rabbit-binder'로 지정
-
 spring:
-  application:
-    name: stream
+  kafka:
+    bootstrap-servers: 192.168.100.221:30641
+  rabbitmq:
+    addresses: 192.168.100.221:30638  # RabbitMQ 서버
+    username: guest
+    password: guest
   cloud:
+    function:
+      definition: kafkaToRabbitFunction
     stream:
+      default-binder: kafka-binder
       bindings:
-        kafka-output:
-          destination: cha-topic  # Kafka로 메시지 전송
-        kafka-input:
-          destination: cha-topic   # Kafka에서 메시지 수신
-        rabbit-output:
-          destination: rabbit-output-queue  # RabbitMQ로 메시지 전송
-        rabbit-input:
-          destination: rabbit-input-queue   # RabbitMQ에서 메시지 수신
+        kafkaToRabbitFunction-in-0:
+          destination: cha-topic  # Kafka에서 읽을 토픽 이름
+          group: local-cha  # Kafka 그룹
+          binder: kafka-binder    # Kafka 바인더 사용
+        kafkaToRabbitFunction-out-0:
+          destination: cha2-topic  # Kafka에서 읽을 토픽 이름
+          group: local-cha  # Kafka 그룹
+          binder: kafka-binder    # Kafka 바인더 사용
+          # destination: chaExchange8 # RabbitMQ에서 보낼 Exchange 이름 # RabbitMQ에 보낼 큐 이름
+          # group: chaQueue8
+          # binder: rabbitmq-binder    # RabbitMQ 바인더 사용
+          producer:
+            required-groups: local-cha # 없으면 queue 가 생성되지 않고 binding 안됨
       binders:
+        # Kafka 설정
         kafka-binder:
           type: kafka
           environment:
             spring:
               kafka:
-                bootstrap-servers: 192.168.100.221:30641 # Kafka 브로커의 주소 설정
-        rabbit-binder:
+                bootstrap-servers: 192.168.100.221:30641  # Kafka 브로커 주소
+                # producer:
+                #   key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                #   value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                consumer:
+                  group-id: local-cha  # Consumer 그룹 아이디
+                  auto-offset-reset: latest  # Kafka에서 소비할 오프셋 위치 (earliest 또는 latest)
+                  enable-auto-commit: false  # 자동 커밋 비활성화
+                  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                  value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        rabbitmq-binder:
           type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: 192.168.100.221  # RabbitMQ 호스트 주소
-                port: 306638
-                username: guest
-                password: guest
-                virtual-host: /
-
-
-
-# eureka:
-#   instance:
-#     preferIpAddress: true
-#     lease:
-#       renewal:
-#         interval:
-#           in:
-#             seconds: 10
-#       expiration:
-#         duration:
-#           in:
-#             seconds: 30
-#   client:
-#     fetchRegistry: true
-#     registerWithEureka: true
-#     serviceUrl:
-#       defaultZone: http://team6-eureka-server:8761/eureka
+          # environment:
+          #   spring:
+          #     rabbitmq:
+          #       host: 192.168.100.221  # RabbitMQ 서버 주소
+          #       port: 30638            # RabbitMQ 포트
+          #       username: guest        # RabbitMQ 사용자 이름
+          #       password: guest        # RabbitMQ 비밀번호

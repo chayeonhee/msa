@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team6-eureka-server-cha
+  namespace: group1-team6
+spec:
+  #replicas: 1
+  selector:
+    matchLabels:
+      app: team6-eureka-server-cha
+  template:
+    metadata:
+      labels:
+        app: team6-eureka-server-cha
+    spec:
+      containers:
+      - name: team6-eureka-server-cha
+        image: k8s-vga-worker1:5000/group1-team6-eureka-server-cha:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8099
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: team6-eureka-server-cha-sv
+  namespace: group1-team6
+spec:
+  selector:
+    app: team6-eureka-server-cha
+  ports:
+    - protocol: TCP
+      port: 8761
+      targetPort: 8099
+      nodePort: 30635
+  type: NodePort

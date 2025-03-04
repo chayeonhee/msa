@@ -1,0 +1,22 @@
+server:
+  port: 8098
+spring:
+  rabbitmq:
+    addresses: 192.168.100.221:30638
+    username: guest
+    password: guest
+  cloud:
+    function:
+      definition: rabbitHandler
+    stream:
+      default-binder: rabbitmq-binder
+      binders:
+        rabbitmq-binder:
+          type: rabbit
+      bindings:
+        rabbitHandler-in-0:
+          destination: chaExchange
+          group: chaQueue
+        rabbitPublisher-out-0:
+          destination: chaExchange
+        

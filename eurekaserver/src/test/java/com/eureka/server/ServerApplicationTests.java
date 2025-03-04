@@ -1,10 +1,10 @@
-package com.cha.configserver;
+package com.eureka.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ConfigserverApplicationTests {
+class ServerApplicationTests {
 
 	@Test
 	void contextLoads() {

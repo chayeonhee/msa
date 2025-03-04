@@ -21,51 +21,23 @@
 # eureka.client.register-with-eureka=true
 # eureka.instance.prefer-ip-address=true
 server:
-  port: 8099
-
-# spring:
-#   application:
-#     name: kafkaServer
-#   kafka:
-#     bootstrap-servers: 192.168.100.221:30641 # Kafka 서버 주소
-#     producer:
-#       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-#     consumer:
-#       group-id: cha-group
-#       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
-
-
-
-
+  port: 8098
 
 spring:
   application:
-    name: streamServer
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: cha-topic   # Kafka 토픽
-          group: cha-group
-          binder: kafka-binder
-        output:
-          destination: rabbit-exchange  # RabbitMQ 교환기
-          binder: rabbit-binder
-      binders:
-        kafka-binder:
-          type: kafka
-          environment:
-            spring:
-              kafka:
-                bootstrap-servers: 192.168.100.221:30641 # Kafka 서버 주소
-              
-        rabbit-binder:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: localhost  # RabbitMQ 서버 주소
-                port: 5672
+    name: kafkaServer
+  kafka:
+    bootstrap-servers: 192.168.100.221:30641 # Kafka 서버 주소
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: cha-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+
+
+
+
+

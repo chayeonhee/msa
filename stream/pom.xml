@@ -33,25 +33,33 @@
     </dependencyManagement>
 
     <dependencies>
-		<!-- <dependency>
+		 <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId> 
-        </dependency>-->
+        </dependency>
         <!-- Spring Cloud Stream Kafka Binder -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-kafka</artifactId>
         </dependency>
-
+ <!-- <dependency>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId> -->
+    <!-- </dependency> -->
+    <!-- <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-stream-binder-kafka</artifactId>
+    </dependency> -->
         <!-- Spring Cloud Stream RabbitMQ Binder -->
-        <dependency>
+         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-        </dependency>
+        </dependency> 
+         <!-- Spring Bus RabbitMQ AMQP -->
         <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream</artifactId>
-        </dependency> -->
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>  -->
 
         <!-- Spring Boot Starter Web -->
         <dependency>
@@ -70,6 +78,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 		   <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-function-context</artifactId>
+    </dependency>
+    <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-function-web</artifactId>
     </dependency>

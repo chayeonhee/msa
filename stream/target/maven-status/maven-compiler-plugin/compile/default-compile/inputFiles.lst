@@ -1,10 +1,7 @@
-c:\workspace\msa\stream\src\main\java\com\cha\config\ConfigProperties.java
-c:\workspace\msa\stream\src\main\java\com\cha\controller\StreamController.java
-c:\workspace\msa\stream\src\main\java\com\cha\function\FunctionConfig.java
-c:\workspace\msa\stream\src\main\java\com\cha\MessageConsumer.java
-c:\workspace\msa\stream\src\main\java\com\cha\MessageProducer.java
-c:\workspace\msa\stream\src\main\java\com\cha\MyProcessor.java
-c:\workspace\msa\stream\src\main\java\com\cha\service\StreamService.java
+c:\workspace\msa\stream\src\main\java\com\cha\kafka\KafkaController.java
+c:\workspace\msa\stream\src\main\java\com\cha\kafka\KafkaReceiver.java
+c:\workspace\msa\stream\src\main\java\com\cha\kafka\KafkaSender.java
+c:\workspace\msa\stream\src\main\java\com\cha\kafka_rabbit\StreamFunction.java
+c:\workspace\msa\stream\src\main\java\com\cha\rabbit\RabbitController.java
+c:\workspace\msa\stream\src\main\java\com\cha\rabbit\RabbitEvent.java
 c:\workspace\msa\stream\src\main\java\com\cha\StreamApplication.java
-c:\workspace\msa\stream\src\main\java\com\cha\StreamEmitter.java
-c:\workspace\msa\stream\src\main\java\com\cha\StreamListener.java
