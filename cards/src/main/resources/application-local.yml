@@ -1,8 +1,54 @@
-spring:
-  config:
-    import: "optional:configserver:http://192.168.100.221:30633/"
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://team6-eureka-server:8761/eureka
+
+spring:
+  config:
+    import: "optional:configserver:http://192.168.100.221:30633/"
+  kafka:
+    bootstrap-servers: 192.168.100.221:30641
+  rabbitmq:
+    addresses: 192.168.100.221:30638  # RabbitMQ 서버
+    username: guest
+    password: guest
+  cloud:
+    function:
+      definition: kafkaToRabbitFunction
+    stream:
+      default-binder: kafka-binder
+      bindings:
+        kafkaToRabbitFunction-in-0:
+          destination: cha-topic  # Kafka에서 읽을 토픽 이름
+          group: local-cha  # Kafka 그룹
+          binder: kafka-binder    # Kafka 바인더 사용
+        # kafkaToRabbitFunction-out-0: # Prodece KAFKA
+        #   destination: cha2-topic  # Kafka에서 읽을 토픽 이름
+        #   group: local-cha  # Kafka 그룹
+        #   binder: kafka-binder    # Kafka 바인더 사용
+        #   producer:
+        #     required-groups: local-cha # 없으면 binding 안됨
+        kafkaToRabbitFunction-out-0: # Prodece RABBITMQ
+          destination: chaExchange # RabbitMQ에서 보낼 Exchange 이름 # RabbitMQ에 보낼 큐 이름
+          group: chaQueue
+          binder: rabbitmq-binder    # RabbitMQ 바인더 사용
+          producer:
+            required-groups: chaQueue # 없으면 queue 가 생성되지 않고 binding 안됨
+      binders:
+        kafka-binder:
+          type: kafka
+          environment:
+            spring:
+              kafka:
+                bootstrap-servers: 192.168.100.221:30641  # Kafka 브로커 주소
+                # producer:
+                #   key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                #   value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+                consumer:
+                  group-id: local-cha  # Consumer 그룹 아이디
+                  auto-offset-reset: latest  # Kafka에서 소비할 오프셋 위치 (earliest 또는 latest)
+                  enable-auto-commit: false  # 자동 커밋 비활성화
+                  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                  value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        rabbitmq-binder:
+          type: rabbit
