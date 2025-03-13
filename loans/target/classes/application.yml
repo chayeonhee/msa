@@ -49,6 +49,7 @@ eureka:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
+    hostname: ${HOSTNAME}
   client:
     fetchRegistry: true
     registerWithEureka: true
