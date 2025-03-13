@@ -2,7 +2,7 @@ server:
   port: 8099
 spring:
   profiles:
-    active: "local"
+    active: "prod"
   application:
     name: "loans"
   datasource:
@@ -22,6 +22,9 @@ spring:
     # import: "optional:configserver:http://localhost:8099/"
     import: "optional:configserver:http://192.168.100.221:30633/"
 management:
+  metrics:
+    tags:
+      application: "loans"
   prometheus:
     metrics:
       export:
@@ -29,7 +32,7 @@ management:
   tracing:
     enabled: true
     sampling:
-      probability: 10
+      probability: 1.0
   zipkin:
     tracing:
       endpoint: http://team6-zipkin:80/api/v2/spans
