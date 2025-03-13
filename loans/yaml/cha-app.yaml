@@ -30,7 +30,7 @@ spec:
     app: loan-lbl-cha
   ports:
     - protocol: TCP
-      port: 8087 # kube unique inner port
+      port: 8089 # kube unique inner port
       targetPort: 8099 #listen port, container port, Docker Expose port is equal
       nodePort: 30630
   type: NodePort
