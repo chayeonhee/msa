@@ -1,8 +1,8 @@
 server:
   port: 8099
 spring:
-  # profiles:
-    # active: "local"
+  profiles:
+    active: "local"
   application:
     name: "loans"
   datasource:
@@ -18,9 +18,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  # config:
+  config:
     # import: "optional:configserver:http://localhost:8099/"
-    # import: "optional:configserver:http://192.168.100.221:30633/"
+    import: "optional:configserver:http://192.168.100.221:30633/"
 management:
   prometheus:
     metrics:
